@@ -70,7 +70,7 @@ namespace SocialEngineeringExercise.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-
+        //透過EMAIL點擊回傳將次數加1
         // PUT: api/SocialEnginnringReplies/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutSocialEnginnringReply(Guid id)

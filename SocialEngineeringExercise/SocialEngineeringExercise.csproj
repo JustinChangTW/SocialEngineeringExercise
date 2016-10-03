@@ -217,6 +217,14 @@
     <Compile Include="Migrations\201610030938258_Initial.Designer.cs">
       <DependentUpon>201610030938258_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610030958428_Add Controller.cs" />
+    <Compile Include="Migrations\201610030958428_Add Controller.Designer.cs">
+      <DependentUpon>201610030958428_Add Controller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610031015148_增加測試資料.cs" />
+    <Compile Include="Migrations\201610031015148_增加測試資料.Designer.cs">
+      <DependentUpon>201610031015148_增加測試資料.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -298,6 +306,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201610030938258_Initial.resx">
       <DependentUpon>201610030938258_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610030958428_Add Controller.resx">
+      <DependentUpon>201610030958428_Add Controller.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610031015148_增加測試資料.resx">
+      <DependentUpon>201610031015148_增加測試資料.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
