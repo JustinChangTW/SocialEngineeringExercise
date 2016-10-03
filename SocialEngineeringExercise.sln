@@ -5,6 +5,19 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialEngineeringExercise", "SocialEngineeringExercise\SocialEngineeringExercise.csproj", "{4988AFB6-0696-478C-ABF7-1A2B0A3BF35D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{F09378D4-904D-4A83-88EB-316B16FDE52C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{833E1574-2973-4EE3-BE1B-C1DDA212293B}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1 = PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{66294781-16D3-45A3-B81B-78F0C46F206E}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Templates\SocialEngineeringExercise.json = PublishScripts\Templates\SocialEngineeringExercise.json
+		PublishScripts\Templates\SocialEngineeringExercise.param.dev.json = PublishScripts\Templates\SocialEngineeringExercise.param.dev.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +31,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{833E1574-2973-4EE3-BE1B-C1DDA212293B} = {F09378D4-904D-4A83-88EB-316B16FDE52C}
+		{66294781-16D3-45A3-B81B-78F0C46F206E} = {F09378D4-904D-4A83-88EB-316B16FDE52C}
 	EndGlobalSection
 EndGlobal
