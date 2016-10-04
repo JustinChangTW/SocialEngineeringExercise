@@ -26,17 +26,41 @@ namespace SocialEngineeringExercise.Controllers
         [ResponseType(typeof(SocialEnginnringReply))]
         public IHttpActionResult GetSocialEnginnringReply(Guid id)
         {
-            SocialEnginnringReply socialEnginnringReply = db.SocialEnginnringReply.Find(id);
-            if (socialEnginnringReply == null)
+            //    SocialEnginnringReply socialEnginnringReply = db.SocialEnginnringReply.Find(id);
+            //    if (socialEnginnringReply == null)
+            //    {
+            //        return NotFound();
+            //    }
+
+            //    return Ok(socialEnginnringReply);
+            //}
+            SocialEnginnringReply socialEnginnringReply = db.SocialEnginnringReply.Where(a => a.SocialEnginnringGuid == id).SingleOrDefault();
+
+            socialEnginnringReply.ClickTime = socialEnginnringReply.ClickTime + 1;
+
+            db.Entry(socialEnginnringReply).State = EntityState.Modified;
+
+            try
             {
-                return NotFound();
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!SocialEnginnringReplyExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
             }
 
-            return Ok(socialEnginnringReply);
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // PUT: api/SocialEnginnringReplies/5
-        [ResponseType(typeof(void))]
+// PUT: api/SocialEnginnringReplies/5
+[ResponseType(typeof(void))]
         public IHttpActionResult PutSocialEnginnringReply(Guid id, SocialEnginnringReply socialEnginnringReply)
         {
             if (!ModelState.IsValid)
