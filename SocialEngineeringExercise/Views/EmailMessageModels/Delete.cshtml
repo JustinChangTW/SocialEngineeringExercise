@@ -1,0 +1,80 @@
+﻿@model SocialEngineeringExercise.Models.EmailMessageModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>EmailMessageModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Subject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsBodyHtml)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsBodyHtml)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Body)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Body)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prority)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prority)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MailEncoding)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MailEncoding)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Attachment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Attachment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AttachmentInline)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AttachmentInline)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

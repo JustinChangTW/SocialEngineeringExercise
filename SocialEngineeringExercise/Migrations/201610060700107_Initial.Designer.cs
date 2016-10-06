@@ -7,13 +7,13 @@ namespace SocialEngineeringExercise.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class 連線字串 : IMigrationMetadata
+    public sealed partial class Initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(連線字串));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201610060100507_連線字串"; }
+            get { return "201610060700107_Initial"; }
         }
         
         string IMigrationMetadata.Source

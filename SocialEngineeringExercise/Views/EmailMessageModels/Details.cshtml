@@ -1,0 +1,74 @@
+﻿@model SocialEngineeringExercise.Models.EmailMessageModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>EmailMessageModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Subject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsBodyHtml)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsBodyHtml)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Body)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Body)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prority)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prority)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MailEncoding)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MailEncoding)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Attachment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Attachment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AttachmentInline)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AttachmentInline)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Guid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
