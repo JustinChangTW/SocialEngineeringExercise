@@ -30,7 +30,7 @@ namespace SocialEngineeringExercise.Migrations
 
             context.SocialEnginnringReply.AddOrUpdate(
                 p => p.SocialEnginnringGuid,
-                new SocialEnginnringReply()
+                new SocialEnginnringReplyModel()
                 {
                     SocialEnginnringGuid = Guid.NewGuid(),
                     EmployeeNo = "0001",
@@ -38,7 +38,7 @@ namespace SocialEngineeringExercise.Migrations
                     EmployeeName = "Test",
                     ClickTime = 0,
                     Remark = ""
-                }, new SocialEnginnringReply()
+                }, new SocialEnginnringReplyModel()
                 {
                     SocialEnginnringGuid = Guid.NewGuid(),
                     EmployeeNo = "0002",

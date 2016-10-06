@@ -17,13 +17,13 @@ namespace SocialEngineeringExercise.Controllers
         private SocialEnginnringModel db = new SocialEnginnringModel();
 
         // GET: api/SocialEnginnringReplies
-        public IQueryable<SocialEnginnringReply> GetSocialEnginnringReply()
+        public IQueryable<SocialEnginnringReplyModel> GetSocialEnginnringReply()
         {
             return db.SocialEnginnringReply;
         }
 
         // GET: api/SocialEnginnringReplies/5
-        [ResponseType(typeof(SocialEnginnringReply))]
+        [ResponseType(typeof(SocialEnginnringReplyModel))]
         public IHttpActionResult GetSocialEnginnringReply(Guid id)
         {
             //    SocialEnginnringReply socialEnginnringReply = db.SocialEnginnringReply.Find(id);
@@ -34,7 +34,7 @@ namespace SocialEngineeringExercise.Controllers
 
             //    return Ok(socialEnginnringReply);
             //}
-            SocialEnginnringReply socialEnginnringReply = db.SocialEnginnringReply.Where(a => a.SocialEnginnringGuid == id).SingleOrDefault();
+            SocialEnginnringReplyModel socialEnginnringReply = db.SocialEnginnringReply.Where(a => a.SocialEnginnringGuid == id).SingleOrDefault();
 
             socialEnginnringReply.ClickTime = socialEnginnringReply.ClickTime + 1;
 
@@ -61,7 +61,7 @@ namespace SocialEngineeringExercise.Controllers
 
 // PUT: api/SocialEnginnringReplies/5
 [ResponseType(typeof(void))]
-        public IHttpActionResult PutSocialEnginnringReply(Guid id, SocialEnginnringReply socialEnginnringReply)
+        public IHttpActionResult PutSocialEnginnringReply(Guid id, SocialEnginnringReplyModel socialEnginnringReply)
         {
             if (!ModelState.IsValid)
             {
@@ -99,7 +99,7 @@ namespace SocialEngineeringExercise.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutSocialEnginnringReply(Guid id)
         {
-            SocialEnginnringReply socialEnginnringReply = db.SocialEnginnringReply.Where(a => a.SocialEnginnringGuid == id).SingleOrDefault();
+            SocialEnginnringReplyModel socialEnginnringReply = db.SocialEnginnringReply.Where(a => a.SocialEnginnringGuid == id).SingleOrDefault();
 
             socialEnginnringReply.ClickTime = socialEnginnringReply.ClickTime + 1;
 
@@ -125,8 +125,8 @@ namespace SocialEngineeringExercise.Controllers
         }
 
         // POST: api/SocialEnginnringReplies
-        [ResponseType(typeof(SocialEnginnringReply))]
-        public IHttpActionResult PostSocialEnginnringReply(SocialEnginnringReply socialEnginnringReply)
+        [ResponseType(typeof(SocialEnginnringReplyModel))]
+        public IHttpActionResult PostSocialEnginnringReply(SocialEnginnringReplyModel socialEnginnringReply)
         {
             if (!ModelState.IsValid)
             {
@@ -155,10 +155,10 @@ namespace SocialEngineeringExercise.Controllers
         }
 
         // DELETE: api/SocialEnginnringReplies/5
-        [ResponseType(typeof(SocialEnginnringReply))]
+        [ResponseType(typeof(SocialEnginnringReplyModel))]
         public IHttpActionResult DeleteSocialEnginnringReply(Guid id)
         {
-            SocialEnginnringReply socialEnginnringReply = db.SocialEnginnringReply.Find(id);
+            SocialEnginnringReplyModel socialEnginnringReply = db.SocialEnginnringReply.Find(id);
             if (socialEnginnringReply == null)
             {
                 return NotFound();

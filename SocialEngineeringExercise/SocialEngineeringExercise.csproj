@@ -229,12 +229,17 @@
     <Compile Include="Migrations\201610060100507_連線字串.Designer.cs">
       <DependentUpon>201610060100507_連線字串.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610060536223_增加寄送Mail資料表.cs" />
+    <Compile Include="Migrations\201610060536223_增加寄送Mail資料表.Designer.cs">
+      <DependentUpon>201610060536223_增加寄送Mail資料表.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\EmailMessageModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\SocialEnginnringModel.cs" />
-    <Compile Include="Models\SocialEnginnringReply.cs" />
+    <Compile Include="Models\SocialEnginnringReplyModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -319,6 +324,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610060100507_連線字串.resx">
       <DependentUpon>201610060100507_連線字串.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610060536223_增加寄送Mail資料表.resx">
+      <DependentUpon>201610060536223_增加寄送Mail資料表.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

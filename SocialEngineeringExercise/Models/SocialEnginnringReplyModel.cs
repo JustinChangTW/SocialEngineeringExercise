@@ -7,7 +7,7 @@ using System.Web;
 
 namespace SocialEngineeringExercise.Models
 {
-    public class SocialEnginnringReply
+    public class SocialEnginnringReplyModel
     {
         [Key]
         [DisplayName("序號")]
