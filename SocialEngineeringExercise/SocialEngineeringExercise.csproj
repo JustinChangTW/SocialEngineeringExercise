@@ -225,6 +225,10 @@
     <Compile Include="Migrations\201610031015148_增加測試資料.Designer.cs">
       <DependentUpon>201610031015148_增加測試資料.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610060100507_連線字串.cs" />
+    <Compile Include="Migrations\201610060100507_連線字串.Designer.cs">
+      <DependentUpon>201610060100507_連線字串.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -312,6 +316,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610031015148_增加測試資料.resx">
       <DependentUpon>201610031015148_增加測試資料.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610060100507_連線字串.resx">
+      <DependentUpon>201610060100507_連線字串.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
