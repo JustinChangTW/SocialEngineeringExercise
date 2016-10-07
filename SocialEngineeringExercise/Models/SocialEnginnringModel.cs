@@ -22,6 +22,7 @@
 
         public virtual DbSet<SocialEnginnringReplyModel> SocialEnginnringReply { get; set; }
         public virtual DbSet<EmailMessageModel> EmailMessageModel { get; set; }
+        public virtual DbSet<SmtpConfigModel> SmtpConfigModel { get; set; }
     }
 
     //public class MyEntity

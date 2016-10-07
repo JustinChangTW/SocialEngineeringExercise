@@ -32,6 +32,6 @@ namespace SocialEngineeringExercise.Models
         public string Attachment { get; set; }
 
         [Description("設定該附件為一個內嵌附件(Inline Attachment)")]
-        public string  AttachmentInline { get; set; }
+        public bool  AttachmentInline { get; set; }
     }
 }

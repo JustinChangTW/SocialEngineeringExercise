@@ -119,8 +119,8 @@ namespace SocialEngineeringExercise.Controllers
             return RedirectToAction("Index");
         }
 
-        [Authorize(Roles ="Admin")]
-        [ValidateAntiForgeryToken]
+        //[Authorize(Roles ="Admin")]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> SentMail()
         {
             Mail mail = new Mail();
@@ -148,12 +148,14 @@ namespace SocialEngineeringExercise.Controllers
         {
             var list = db.EmailMessageModel.ToList();
             var mail = db.SocialEnginnringReply.ToList();
+            var smtp = db.SmtpConfigModel.SingleOrDefault();
 
             foreach (var l in list)
             {
                 foreach (var m in mail)
                 {
-                    MailAddress mailaddress = new MailAddress(m.EmployeeEmail, m.EmployeeName);
+                    MailAddress mailto = new MailAddress(m.EmployeeEmail, m.EmployeeName);
+                    SentMail(l , mailto, smtp);
                 }
             }
 
@@ -161,17 +163,17 @@ namespace SocialEngineeringExercise.Controllers
         }
 
 
-        public string SentMail(EmailMessageModel mail, MailAddress Mailto)
+        public string SentMail(EmailMessageModel mail, MailAddress mailto,SmtpConfigModel smtp)
         {
             string result = "";
 
             string myMailEncoding = mail.MailEncoding;// "utf-8";
-            string myFromEmail = "testtest.com";
+            string myFromEmail = "justin.chang@megainsag.com.tw";
             string myFromName = "測試寄件者";
             //string myToEmail = Mailto;
             //string myToName = "測試收件者";
             MailAddress from = new MailAddress(myFromEmail, myFromName, Encoding.GetEncoding(myMailEncoding));
-            MailAddress to = Mailto;//new MailAddress(myToEmail, myToName, Encoding.GetEncoding(myMailEncoding));
+            MailAddress to = mailto;//new MailAddress(myToEmail, myToName, Encoding.GetEncoding(myMailEncoding));
             MailMessage myMessage = new MailMessage(from, to);
             myMessage.Subject = "郵件主旨";
             myMessage.SubjectEncoding = Encoding.GetEncoding(myMailEncoding);
@@ -187,20 +189,29 @@ namespace SocialEngineeringExercise.Controllers
             attachment.TransferEncoding = System.Net.Mime.TransferEncoding.Base64;
 
             // 設定該附件為一個內嵌附件(Inline Attachment)
-            attachment.ContentDisposition.Inline = true;
+            attachment.ContentDisposition.Inline = mail.AttachmentInline;//  true;
             attachment.ContentDisposition.DispositionType =
                System.Net.Mime.DispositionTypeNames.Inline;
+
             myMessage.Attachments.Add(attachment);
-            SmtpClient smtp = new SmtpClient("localhost");
-            //smtp.
+
+            //SMTP
+            SmtpClient smtpObject = new SmtpClient();
+            smtpObject.Host = smtp.Host;
+            smtpObject.Port = smtp.Port;
+            smtpObject.Credentials = new NetworkCredential(smtp.Id, smtp.Password);
+            smtpObject.EnableSsl = smtp.EnableSsl;
+
+            //寄信
             try
             {
-                smtp.Send(myMessage);
+                smtpObject.Send(myMessage);
                 result =DateTime.Now.ToString() + " 寄信成功";
                 return result;
             }
-            catch
+            catch(Exception e)
             {
+                var a = e;
                 result = DateTime.Now.ToString() + " 寄信失敗!!!";
                 return result;
             }
