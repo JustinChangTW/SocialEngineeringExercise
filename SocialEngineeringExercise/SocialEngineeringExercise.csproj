@@ -218,6 +218,10 @@
     <Compile Include="Migrations\201610060730522_INITAL.Designer.cs">
       <DependentUpon>201610060730522_INITAL.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610140944383_INITAL1.cs" />
+    <Compile Include="Migrations\201610140944383_INITAL1.Designer.cs">
+      <DependentUpon>201610140944383_INITAL1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -271,6 +275,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Views\HtmlPage1.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -306,6 +311,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201610060730522_INITAL.resx">
       <DependentUpon>201610060730522_INITAL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610140944383_INITAL1.resx">
+      <DependentUpon>201610140944383_INITAL1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

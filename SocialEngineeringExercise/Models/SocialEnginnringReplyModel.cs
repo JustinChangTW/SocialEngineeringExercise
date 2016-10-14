@@ -29,5 +29,7 @@ namespace SocialEngineeringExercise.Models
         [DisplayName("Click次數")]
         public int ClickTime { get; set; }
 
+        public string HostUrlRoot { get; set; }
+
     }
 }
