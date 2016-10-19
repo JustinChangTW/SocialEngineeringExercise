@@ -18,6 +18,9 @@ namespace SocialEngineeringExercise
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            //修正 ASP.NET Web API 的 XmlFormatter 所支援的媒體類型(MediaType)
+            GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
         }
     }
 }

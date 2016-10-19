@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using SocialEngineeringExercise.Models;
 using System.Net.Mail;
 using System.Text;
+using System.Threading;
 
 namespace SocialEngineeringExercise.Controllers
 {
@@ -169,7 +170,7 @@ namespace SocialEngineeringExercise.Controllers
 
             string myMailEncoding = emailMessage.MailEncoding;// "utf-8";
             string myFromEmail = "service@outlook.com.tw";
-            string myFromName = "service";
+            string myFromName = "最新消息";
             //string myToEmail = Mailto;
             //string myToName = "測試收件者";
             MailAddress from = new MailAddress(myFromEmail, myFromName, Encoding.GetEncoding(myMailEncoding));
@@ -186,26 +187,31 @@ namespace SocialEngineeringExercise.Controllers
             //var b = RedirectToAction("Index");
             emailMessage.Body = emailMessage.Body.Replace("#href#", host);//<img src="#img#" href="#href#“/>
 
+
             //設定圖片附件位址
             var file = emailMessage.Attachment.Split('\\');
-            emailMessage.Body=emailMessage.Body.Replace("#img#", file[file.GetLength(0)-1]);
+            emailMessage.Body = emailMessage.Body.Replace("#img#", file[file.GetLength(0) - 1]);
             myMessage.Body = emailMessage.Body;// "<h1>這是郵件內容</h1><hr/><img src=\"Logo.gif\" />";
             myMessage.BodyEncoding = Encoding.GetEncoding(myMailEncoding);
             myMessage.IsBodyHtml = emailMessage.IsBodyHtml;// true;
-            myMessage.Priority =  MailPriority.High;
+            myMessage.Priority = MailPriority.High;
 
-            // 設定附件檔案(Attachment)
-            System.Net.Mail.Attachment attachment =  new System.Net.Mail.Attachment(emailMessage.Attachment);
-            attachment.Name = System.IO.Path.GetFileName(emailMessage.Attachment);
-            attachment.NameEncoding = Encoding.GetEncoding(myMailEncoding); 
-            attachment.TransferEncoding = System.Net.Mime.TransferEncoding.Base64;
+            if (emailMessage.AttachmentInline)
+            {
+                // 設定附件檔案(Attachment)
+                System.Net.Mail.Attachment attachment = new System.Net.Mail.Attachment(emailMessage.Attachment);
+                attachment.Name = System.IO.Path.GetFileName(emailMessage.Attachment);
+                attachment.NameEncoding = Encoding.GetEncoding(myMailEncoding);
+                attachment.TransferEncoding = System.Net.Mime.TransferEncoding.Base64;
 
-            // 設定該附件為一個內嵌附件(Inline Attachment)
-            attachment.ContentDisposition.Inline = emailMessage.AttachmentInline;//  true;
-            attachment.ContentDisposition.DispositionType =
-               System.Net.Mime.DispositionTypeNames.Inline;
+                // 設定該附件為一個內嵌附件(Inline Attachment)
+                attachment.ContentDisposition.Inline = emailMessage.AttachmentInline;//  true;
+                attachment.ContentDisposition.DispositionType =
+                   System.Net.Mime.DispositionTypeNames.Inline;
 
-            myMessage.Attachments.Add(attachment);
+                myMessage.Attachments.Add(attachment);
+
+            }
 
             //SMTP
             SmtpClient smtpObject = new SmtpClient();
@@ -219,6 +225,7 @@ namespace SocialEngineeringExercise.Controllers
             {
                 smtpObject.Send(myMessage);
                 result =DateTime.Now.ToString() + " 寄信成功";
+                Thread.Sleep(60000); //Delay 1秒
                 return result;
             }
             catch(Exception e)
