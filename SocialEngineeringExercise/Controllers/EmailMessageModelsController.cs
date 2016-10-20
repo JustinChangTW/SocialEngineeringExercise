@@ -168,17 +168,33 @@ namespace SocialEngineeringExercise.Controllers
         {
             string result = "";
 
-            string myMailEncoding = emailMessage.MailEncoding;// "utf-8";
-            string myFromEmail = "service@outlook.com.tw";
-            string myFromName = "最新消息";
-            //string myToEmail = Mailto;
-            //string myToName = "測試收件者";
-            MailAddress from = new MailAddress(myFromEmail, myFromName, Encoding.GetEncoding(myMailEncoding));
-            MailAddress to = mailto;//new MailAddress(myToEmail, myToName, Encoding.GetEncoding(myMailEncoding));
-            MailMessage myMessage = new MailMessage(from, to);
-            myMessage.Subject = emailMessage.Subject;// "郵件主旨";
-            myMessage.SubjectEncoding = Encoding.GetEncoding(myMailEncoding);
 
+                string myMailEncoding = emailMessage.MailEncoding;// "utf-8";
+                                                                  //string myFromEmail = emailMessage.Address;
+                string myFromEmail = emailMessage.Address.Replace(Convert.ToChar(13), Convert.ToChar(32)).Replace(Convert.ToChar(10), Convert.ToChar(32));
+                //string myFromName = emailMessage.DisplayName;
+                string myFromName = emailMessage.DisplayName.Replace(Convert.ToChar(13), Convert.ToChar(32)).Replace(Convert.ToChar(10), Convert.ToChar(32));
+            //.Replace( (13), ""), Chr(10), "")
+            MailAddress from = null;
+            MailAddress to = null;
+            MailMessage myMessage = null;
+            try
+            {
+                //string myToEmail = Mailto;
+                //string myToName = "測試收件者";
+                //from = new MailAddress(myFromEmail, myFromName, Encoding.GetEncoding(myMailEncoding));
+                to = mailto;//new MailAddress(myToEmail, myToName, Encoding.GetEncoding(myMailEncoding));
+                myMessage = new MailMessage();
+                myMessage.From=new MailAddress(myFromName + "<" + myFromEmail + ">");
+                myMessage.To.Add(to);
+                myMessage.Subject = emailMessage.Subject;// "郵件主旨";
+
+                myMessage.SubjectEncoding = Encoding.GetEncoding(myMailEncoding);
+            }
+            catch(Exception e)
+            {
+                var ee = e.Message;
+            }
             //設定回覆網址
             var host = "";// HttpContext..Current.Request.ToString();
             host = reply.HostUrlRoot + String.Format("api/SocialEnginnringReplies/{0}", reply.SocialEnginnringGuid.ToString());
@@ -219,6 +235,13 @@ namespace SocialEngineeringExercise.Controllers
             smtpObject.Port = smtp.Port;
             smtpObject.Credentials = new NetworkCredential(smtp.Id, smtp.Password);
             smtpObject.EnableSsl = smtp.EnableSsl;
+
+            //回條開啟&送達
+            myMessage.DeliveryNotificationOptions = DeliveryNotificationOptions.OnSuccess;
+            var replyMail = String.Format("\" Mail \" {0}@{1}", smtp.Id, smtp.Host);
+            myMessage.Headers.Add("Disposition-Notification-To", replyMail);//"\"Michael\" huanlin.tsai@xmail.com");
+            smtpObject.DeliveryMethod = SmtpDeliveryMethod.Network;
+
 
             //寄信
             try

@@ -214,6 +214,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610190105110_SMTP.cs" />
+    <Compile Include="Migrations\201610190105110_SMTP.Designer.cs">
+      <DependentUpon>201610190105110_SMTP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610190123051_SMTP2.cs" />
+    <Compile Include="Migrations\201610190123051_SMTP2.Designer.cs">
+      <DependentUpon>201610190123051_SMTP2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EmailMessageModel.cs" />
@@ -273,6 +282,7 @@
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
     <Content Include="Content\Site.css" />
@@ -298,6 +308,14 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201610190105110_SMTP.resx">
+      <DependentUpon>201610190105110_SMTP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610190123051_SMTP2.resx">
+      <DependentUpon>201610190123051_SMTP2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

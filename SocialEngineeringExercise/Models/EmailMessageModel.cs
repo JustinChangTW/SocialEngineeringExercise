@@ -33,5 +33,10 @@ namespace SocialEngineeringExercise.Models
 
         [Description("設定該附件為一個內嵌附件(Inline Attachment)")]
         public bool  AttachmentInline { get; set; }
+
+        [Description("寄送者EMAIL")]
+        public string Address { get; set; }
+        [Description("寄送者顯示名稱")]
+        public string DisplayName { get; set; }
     }
 }
