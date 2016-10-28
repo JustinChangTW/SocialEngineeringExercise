@@ -151,6 +151,7 @@ namespace SocialEngineeringExercise.Controllers
             var mail = db.SocialEnginnringReply.ToList();
             var smtp = db.SmtpConfigModel.SingleOrDefault();
 
+            //有BUG//GUID不會跳動～～～只會使用第一筆///////////////////////////////////////////
             foreach (var l in list)
             {
                 foreach (var m in mail)
@@ -197,6 +198,7 @@ namespace SocialEngineeringExercise.Controllers
             }
             //設定回覆網址
             var host = "";// HttpContext..Current.Request.ToString();
+            //有BUG//GUID不會跳動～～～只會使用第一筆///////////////////////////////////////////
             host = reply.HostUrlRoot + String.Format("api/SocialEnginnringReplies/{0}", reply.SocialEnginnringGuid.ToString());
             //var a = ActionLink("test", "Details", new { id = 2 })
             //host = host + String.Format("~/api/SocialEnginnringReplies/{0}", reply.SocialEnginnringGuid.ToString());
